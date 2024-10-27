@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './About.css'
-import { link } from 'fs'
 
 function About() {
     const [linkDisabled, setLinkDisabled] = useState(true)
