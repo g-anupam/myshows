@@ -1,0 +1,30 @@
+.login-container {
+    position: absolute;
+    left: 40%;
+    top: 200px
+}
+
+#ediv {
+    position: relative;
+    left: 0%;
+}
+
+#eid {
+    position: relative;
+    text-align: center;
+    left: 10%;
+}
+
+#pdiv {
+    padding-bottom: 20px;
+}
+#pid {
+    position: relative;
+    text-align: center;
+    left: 21.1%;
+}
+
+#lb {
+    position: relative;
+    left: 35%
+}

@@ -13,6 +13,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.contentdiv1 {
+  position: absolute;
+  top: 65px;
+  left: 27%;
+}
+
+#heading {
+  font-size: 55px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .dark-theme {
   color: rgba(255, 255, 255, 0.87); 
   background-color: #242424; 
@@ -22,9 +33,14 @@
   background-color: #1a1a1a;
 }
 
+.dark-theme #heading {
+  color: rgba(255, 255, 255, 0.87); 
+}
+
 .light-theme {
   color: black; 
   background-color: #ffffff; 
+  min-height: 100vh;  /*takes care of vertical overflow*/
 }
 
 .light-theme button {
@@ -35,6 +51,11 @@
 .light-theme a:hover {
   color: red;
 }
+
+.light-theme #heading {
+  color: black
+}
+
 
 a {
   font-weight: 500;
@@ -61,25 +82,15 @@ h1 {
 
 .contentdiv {
   position: absolute;
-  top: 0%;
-  left: 44.1%;
+  top: 0px;
+  left: 39%;
 }
 
-#heading {
+#desc {
   font-size: 30px;
   font-family: 'Courier New', Courier, monospace;
 }
 
-#desc {
-  font-size: 18px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.contentdiv1 {
-  position: absolute;
-  top: 55px;
-  left: 37%;
-}
 
 #about {
   text-align: center;

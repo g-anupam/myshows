@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import {Link} from 'react-router-dom'
 import './rightButton.css'
 
 function RightButton() {
@@ -24,9 +25,9 @@ function RightButton() {
         <div id="rightdiv">
             <button id="b1" onClick={clickFunction}>...</button>
             <div id="options" style={{opacity: isVisible ? 1 : 0, transition: 'opacity 0.5s ease', textAlign:'left', paddingRight: '15px'}}>
-                <h3><a className="rightlink" href={linkDisabled ? undefined : "#"}>Sign in</a></h3> 
-                <h3><a className="rightlink" href={linkDisabled ? undefined : "#"}>Booked shows</a></h3>
-                <h3><a className="rightlink" href={linkDisabled ? undefined : "../index.html#about"}>About us</a></h3>
+                <h3><Link className="rightlink" to={linkDisabled ? undefined : "/login"}>Sign up/Log in</Link></h3> 
+                <h3><Link className="rightlink" to={linkDisabled ? undefined : "#"}>Booked shows</Link></h3>
+                <h3><a className="rightlink" href={linkDisabled ? undefined : "/#about"}>About us</a></h3>
             </div>
         </div>
     )

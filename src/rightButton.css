@@ -20,7 +20,7 @@ html {
 
 #options{
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.2s ease;
     text-align:left;
     padding-right: 15px;
 }
