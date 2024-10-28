@@ -3,9 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import RightButton from './rightButton'
 import Movies from './Movies'
+import ToggleTheme from './ToggleTheme'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ToggleTheme />
     <div class="contentdiv">
       <h1 id="heading">TicketVerse</h1>
     </div>
@@ -55,12 +57,9 @@ createRoot(document.getElementById('root')).render(
       <h3 id="names">
         <a id="names" href="#">Ayush Chakraborty</a>
         <br></br>
-        <br></br>
         <a id="names" href="#">Anupam G</a>
         <br></br>
-        <br></br>
         <a id="names" href="#">Archit Rode</a>
-        <br></br>
         <br></br>
       </h3>
     </div> 
