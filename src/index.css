@@ -39,8 +39,7 @@ h1 {
 .contentdiv {
   position: absolute;
   top: 0%;
-  left: 45%;
-  text-align: center;
+  left: 44.1%;
 }
 
 #heading {
@@ -57,6 +56,12 @@ h1 {
   position: absolute;
   top: 55px;
   left: 37%;
+  /* text-align: center; */
+}
+
+#about {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 
