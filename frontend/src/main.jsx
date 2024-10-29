@@ -13,9 +13,10 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ToggleTheme />
     <Router>
-      <div class="contentdiv">
+      {/* <div class="contentdiv">
         <h1 id="heading">TicketVerse</h1>
-      </div>
+      </div> */}
+      <Heading />
       <div class="contentdiv1">
         <h2 id="desc">Your Front Row Seat to Every Adventure!</h2>
       </div>

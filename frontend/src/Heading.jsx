@@ -7,15 +7,26 @@ function Heading() {
 
     const handleMouseEnter = () => {
         setIsHover(true)
+        // alert('NIGGA')
     }
 
     const handleMouseLeave = () => {
         setIsHover(false)
     }
 
-    // return (
+    const handleMouseClick = () => {
+        setIsHover(true)
+    }
 
-    // )
+    return (
+        <div className="contentdiv">
+            <Link to="/" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <h1 id="heading">
+                    TicketVerse
+                </h1>
+            </Link>
+        </div>
+    )
 }
 
 export default Heading

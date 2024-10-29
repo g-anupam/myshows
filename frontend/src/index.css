@@ -19,10 +19,10 @@
   left: 27%;
 }
 
-#heading {
+/* #heading {
   font-size: 55px;
   font-family: 'Courier New', Courier, monospace;
-}
+} */
 
 .dark-theme {
   color: rgba(255, 255, 255, 0.87); 
@@ -80,11 +80,11 @@ h1 {
 }
 
 
-.contentdiv {
+/* .contentdiv {
   position: absolute;
   top: 0px;
   left: 39%;
-}
+} */
 
 #desc {
   font-size: 30px;
