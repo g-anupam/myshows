@@ -1,0 +1,88 @@
+#mheading {
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    left: 41%;
+    text-align: center;
+    top: 200px;
+}
+
+.top-bar {
+    position: absolute;
+    top: 150px;
+    left: 32%;
+}
+
+.search-bar {
+    height: 45px;
+    width: 500px;
+    background-color: rgb(235, 227, 179);
+    border-radius: 10px;
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 1000;
+    font-size: 20px;
+    color: rgb(42, 19, 19);
+}
+
+
+.search-button {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+}
+
+
+.poster {
+    position: absolute;
+    top: 280px;
+}
+
+#m4 {
+    position: absolute;
+    left:80%;
+}
+
+#m3 {
+    position: absolute;
+    left:55%;
+}
+
+#m2 {
+    position: absolute;
+    left:30%;
+}
+
+#m1 {
+    position: absolute;
+    left:0%;
+    padding-left: 20px;
+}
+
+.movie-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+}
+
+
+#md1 {
+    position: absolute;
+    top: 420px;
+    left: 3.5%;
+}
+
+#md2 {
+    position: absolute;
+    top: 420px;
+    left: 28%;
+}
+
+#md3 {
+    position: absolute;
+    top: 535px;
+    left: 52%;
+}
+
+#md4 {
+    position: absolute;
+    top: 500px;
+    left: 81%;
+}

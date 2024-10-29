@@ -1,0 +1,33 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#rightdiv {
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+}
+
+#b1 {
+    border-radius: 50px;
+    right: 10px;
+}
+
+#b1:hover {
+    background-color: grey;
+}
+
+#options{
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    text-align:left;
+    padding-right: 15px;
+}
+
+.rightlink:hover {
+    color: yellow;
+}
+
+
+
