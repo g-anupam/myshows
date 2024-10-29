@@ -6,7 +6,6 @@ The Backend Contains the Server.
 ```sh
 cd backend/
 npm i
-npm install express
 node server.js
 ```
 

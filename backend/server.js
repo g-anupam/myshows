@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors"); // Import cors
-const { connectToDatabase } = require("./database/db");
+const { connectToDatabase } = require("./db");
 
 const app = express();
 const PORT = process.env.PORT || 3000;

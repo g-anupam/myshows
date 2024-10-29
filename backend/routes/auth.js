@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { client } = require('./../database/db');
+const { client } = require('./../db');
 const db = client.db('myshows');
 const usersCollection = db.collection('users');
 let chalk;
