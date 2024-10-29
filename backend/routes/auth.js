@@ -28,7 +28,6 @@ router.post('/signup', async (req, res) => {
 // Modified login route
 router.post('/login', async (req, res) => {  
   const {email, passwd} = req.body;
-  
   try {
     const user = await usersCollection.findOne({email});
     if (!user) {
