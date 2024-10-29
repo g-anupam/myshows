@@ -25,8 +25,8 @@
 }
 
 .dark-theme {
-  color: rgba(255, 255, 255, 0.87); 
-  background-color: #242424; 
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
 }
 
 .dark-theme button {
@@ -34,17 +34,18 @@
 }
 
 .dark-theme #heading {
-  color: rgba(255, 255, 255, 0.87); 
+  color: rgba(255, 255, 255, 0.87);
 }
 
 .light-theme {
-  color: black; 
-  background-color: #ffffff; 
-  min-height: 100vh;  /*takes care of vertical overflow*/
+  color: black;
+  background-color: #ffffff;
+  min-height: 100vh;
+  /*takes care of vertical overflow*/
 }
 
 .light-theme button {
-  background-color: #f9f9f9; 
+  background-color: #f9f9f9;
   color: black;
 }
 
@@ -62,6 +63,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -79,6 +81,16 @@ h1 {
   line-height: 1.1;
 }
 
+.logo-container {
+  display: flex;
+  justify-content: left;
+  margin: 60px 20px;
+}
+
+.logo-image {
+  width: 100px;
+  height: auto;
+}
 
 .contentdiv {
   position: absolute;
@@ -109,9 +121,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -122,9 +136,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
