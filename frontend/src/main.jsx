@@ -9,6 +9,7 @@ import ToggleTheme from './components/ToggleTheme'
 import Signup from './pages/signup';
 import Login from './pages/Login';
 import Heading from './components/Heading'
+import MonteCarlo from './pages/MonteCarlo'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -89,6 +90,7 @@ createRoot(document.getElementById('root')).render(
             <br></br> */}
           </>
         } />
+        <Route path="/monte-carlo" element={<MonteCarlo />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>
