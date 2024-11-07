@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './signup.css';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'; // Ensure the path is correct
+import logo from '../../assets/logo.png'; // Ensure the path is correct
 
 function Signup() {
     // Define state for each input field

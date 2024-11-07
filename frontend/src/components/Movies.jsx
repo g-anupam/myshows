@@ -1,11 +1,11 @@
 import './Movies.css'
-import logo from '../assets/logo1.png';
-import movie1 from '../assets/movie1.jfif';
-import movie2 from '../assets/movie2.jfif';
-import movie3 from '../assets/movie3.jfif';
-import movie4 from '../assets/movie4.jfif';
-import movie5 from '../assets/movie5.jfif';
-import movie6 from '../assets/movie6.jfif';
+import logo from '../../assets/logo1.png';
+import movie1 from '../../assets/movie1.jfif';
+import movie2 from '../../assets/movie2.jfif';
+import movie3 from '../../assets/movie3.jfif';
+import movie4 from '../../assets/movie4.jfif';
+import movie5 from '../../assets/movie5.jfif';
+import movie6 from '../../assets/movie6.jfif';
 
 function Movies() {
     return (
