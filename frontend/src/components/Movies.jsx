@@ -6,6 +6,7 @@ import movie3 from '../../assets/movie3.jfif';
 import movie4 from '../../assets/movie4.jfif';
 import movie5 from '../../assets/movie5.jfif';
 import movie6 from '../../assets/movie6.jfif';
+import { Link } from 'react-router-dom';
 
 function Movies() {
     return (
@@ -38,10 +39,12 @@ function Movies() {
             <h2 id="mheading">Recommended Movies</h2>
 
             <div className='recommended-movies'>
-                <div className='movie-item'>
-                    <img src={movie6} alt='Movie 6' className='poster' id="m1" />
-                    <p className='movie-name' id="md1">Monte Carlo</p>
-                </div>
+                <Link to="/monte-carlo" className="movie-item">
+                  <div>
+                    <img src={movie6} alt="Movie 6" className="poster" id="m1" />
+                    <p className="movie-name" id="md1">Monte Carlo</p>
+                  </div>
+                </Link>
                 <div className='movie-item'>
                     <img src={movie2} alt='Movie 2' className='poster' id="m2" />
                     <p className='movie-name' id="md2">Herbie:Fully Loaded</p>
