@@ -1,0 +1,33 @@
+.MonteCarlo {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.poster-container {
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.poster-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.movie-info {
+  flex-grow: 1;
+}
+
+.movie-info h2 {
+  margin-top: 0;
+}
+
+.movie-info h3 {
+  margin-bottom: 0.5rem;
+}
+
+.movie-info ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
