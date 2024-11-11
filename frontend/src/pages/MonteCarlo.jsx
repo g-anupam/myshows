@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-//import "./MonteCarlo.css";
+import { Link } from 'react-router-dom';
+import "./MonteCarlo.css";
 import movie6 from '../../assets/movie6.jfif';
 
 const MovieInfo = ({ onBuyTicketsClick }) => (
@@ -26,14 +27,7 @@ const MovieInfo = ({ onBuyTicketsClick }) => (
   </>
 );
 
-const ShowTimes = ({
-  showTimes,
-  onBackClick,
-  onShowTimeSelect,
-  selectedShowTime,
-  onSeatCountSelect,
-  selectedSeatCount,
-}) => (
+const ShowTimes = ({ showTimes, onShowTimeSelect, selectedShowTime, onBackClick }) => (
   <div>
     <button onClick={onBackClick}>Back</button>
     <h3>Select a Show Time:</h3>
@@ -46,65 +40,89 @@ const ShowTimes = ({
         {showTime}
       </button>
     ))}
-    {selectedShowTime && (
-      <div>
-        <h3>Select Number of Seats:</h3>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((count) => (
-          <button
-            key={count}
-            onClick={() => onSeatCountSelect(count)}
-            className={selectedSeatCount === count ? 'selected' : ''}
-          >
-            {count}
-          </button>
-        ))}
-      </div>
-    )}
+  </div>
+);
+
+const SeatSelection = ({ selectedShowTime, onSeatCountSelect, selectedSeatCount, onBackClick }) => (
+  <div>
+    <button onClick={onBackClick}>Back</button>
+    <h3>Select Number of Seats for {selectedShowTime}:</h3>
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((count) => (
+      <button
+        key={count}
+        onClick={() => onSeatCountSelect(count)}
+        className={selectedSeatCount === count ? 'selected' : ''}
+      >
+        {count}
+      </button>
+    ))}
+  </div>
+);
+
+const Confirmation = ({ onBackClick }) => (
+  <div>
+    <button onClick={onBackClick}>Back</button>
+    <h3>Confirmation</h3>
   </div>
 );
 
 const MonteCarlo = () => {
-  const [showTimeOptionsVisible, setShowTimeOptionsVisible] = useState(false);
+  const [step, setStep] = useState('movieInfo');
   const [selectedShowTime, setSelectedShowTime] = useState(null);
   const [selectedSeatCount, setSelectedSeatCount] = useState(null);
-  const [showMovieDetails, setShowMovieDetails] = useState(true);
+  const [requiresLogin, setRequiresLogin] = useState(false);
 
   const handleBuyTicketsClick = () => {
-    setShowMovieDetails(false);
-    setShowTimeOptionsVisible(true);
-  };
-
-  const handleBackClick = () => {
-    setShowMovieDetails(true);
-    setShowTimeOptionsVisible(false);
-    setSelectedShowTime(null);
-    setSelectedSeatCount(null);
+    const userEmail = sessionStorage.getItem('userEmail');
+    if (!userEmail) {
+      setRequiresLogin(true);
+      return;
+    }
+    setStep('showTimes');
   };
 
   const handleShowTimeSelect = (showTime) => {
     setSelectedShowTime(showTime);
-    setSelectedSeatCount(null);
+    setStep('seatSelection');
   };
 
   const handleSeatCountSelect = (count) => {
     setSelectedSeatCount(count);
+    setStep('confirmation');
+  };
+
+  const handleBackClick = () => {
+    if (step === 'confirmation') setStep('seatSelection');
+    else if (step === 'seatSelection') setStep('showTimes');
+    else if (step === 'showTimes') setStep('movieInfo');
   };
 
   const showTimes = ['9:00 AM', '10:30 AM', '12:00 PM', '3:30 PM', '5:00 PM', '7:45 PM'];
 
+  if (requiresLogin) {
+    return <Link to="/login" className="login-link">Please login to continue</Link>;
+  }
+
   return (
     <div>
-      {showMovieDetails && <MovieInfo onBuyTicketsClick={handleBuyTicketsClick} />}
-      {showTimeOptionsVisible && (
+      {step === 'movieInfo' && <MovieInfo onBuyTicketsClick={handleBuyTicketsClick} />}
+      {step === 'showTimes' && (
         <ShowTimes
           showTimes={showTimes}
-          onBackClick={handleBackClick}
           onShowTimeSelect={handleShowTimeSelect}
+          selectedShowTime={selectedShowTime}
+          onBackClick={handleBackClick}
+        />
+      )}
+      {step === 'seatSelection' && (
+        <SeatSelection
           selectedShowTime={selectedShowTime}
           onSeatCountSelect={handleSeatCountSelect}
           selectedSeatCount={selectedSeatCount}
+          onBackClick={handleBackClick}
         />
       )}
+      {step === 'confirmation' && <Confirmation onBackClick={handleBackClick} />}
     </div>
   );
 };
