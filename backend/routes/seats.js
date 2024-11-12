@@ -28,7 +28,7 @@ router.get('/showtime', async (req, res) => {
        console.log(chalk.red(`Showtime not found with ID: `));
        return res.status(404).json({ message: 'Showtime not found' });
      }
-     console.log(chalk.green(`Successfully retrieved showtime: ${}`));
+     console.log(chalk.green(`Successfully retrieved showtime: `));
      res.json(result);
   } catch (error) {
     console.log(chalk.red("Testing error in catch!")); 
