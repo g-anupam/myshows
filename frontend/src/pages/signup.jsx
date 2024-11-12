@@ -36,6 +36,10 @@ function Signup() {
                 setSuccessMessage('User created successfully!');
                 setError('');
                 // Reset input fields
+        
+                sessionStorage.setItem('userEmail', email);
+                sessionStorage.setItem('userPassword', passwd);
+
                 setFirstName('');
                 setLastName('');
                 setEmail('');
