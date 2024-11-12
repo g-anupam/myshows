@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./MonteCarlo.css";
 import movie6 from '../../assets/movie6.jfif';
@@ -95,8 +95,7 @@ const SeatMatrix = ({ showtime, selectedSeats, onSeatSelect, requiredSeats }) =>
                 <button
                   key={seat.seatNumber}
                   disabled={seat.status === 'booked' || 
-                           (selectedSeats.length >= requiredSeats && 
-                            !selectedSeats.includes(seat.seatNumber))}
+                           (selectedSeats.length >= requiredSeats && !selectedSeats.includes(seat.seatNumber))}
                   onClick={() => onSeatSelect(seat)}
                   className={`w-8 h-8 rounded ${getColorForSeat(seat)} 
                             text-white text-sm font-bold
@@ -122,22 +121,31 @@ const Confirmation = ({
   selectedShowTime, 
   selectedSeatCount,
   onBackClick,
-  showtimeData,  // This will be fetched from MongoDB
 }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [showtime, setShowtime] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Fetch showtime data on component mount
   useEffect(() => {
     const fetchShowtimeData = async () => {
+      const hardcodedShowTime = "9:00 AM";
+      console.log("Fetching hardcoded showtime data for:", hardcodedShowTime);
+      //console.log("Fetching showtime data for:", selectedShowTime);
       try {
-        // Replace with your actual API endpoint
-        const response = await fetch(`/api/showtimes/${selectedShowTime}`);
-        if (!response.ok) throw new Error('Failed to fetch showtime data');
+        const encodedShowTime = encodeURIComponent(selectedShowTime);
+        const response = await fetch(`http://localhost:3000/showtime`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch showtime data: ${response.statusText}`);
+        }
+        
         const data = await response.json();
+        console.log("Showtime data fetched successfully:", data);
         setShowtime(data);
       } catch (err) {
+        console.error("Error fetching showtime data:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -147,6 +155,7 @@ const Confirmation = ({
     fetchShowtimeData();
   }, [selectedShowTime]);
 
+  // Handle seat selection
   const handleSeatSelect = (seat) => {
     setSelectedSeats(prev => {
       if (prev.includes(seat.seatNumber)) {
@@ -159,6 +168,7 @@ const Confirmation = ({
     });
   };
 
+  // Confirm booking by sending selected seats to the server
   const handleConfirmBooking = async () => {
     if (selectedSeats.length !== selectedSeatCount) {
       alert('Please select all required seats');
@@ -180,17 +190,25 @@ const Confirmation = ({
 
       if (!response.ok) throw new Error('Booking failed');
 
-      // Handle successful booking
       alert('Booking confirmed!');
-      // Redirect to booking confirmation page or handle as needed
     } catch (err) {
       alert('Failed to confirm booking: ' + err.message);
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!showtime) return <div>No showtime data available</div>;
+  // Render loading, error, or main content
+  if (loading) {
+    console.log("Loading showtime data...");
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    console.error("Error:", error);
+    return <div>Error: {error}</div>;
+  }
+  if (!showtime) {
+    console.log("No showtime data available");
+    return <div>No showtime data available</div>;
+  }
 
   return (
     <div className="p-4">
@@ -222,6 +240,7 @@ const Confirmation = ({
     </div>
   );
 };
+
 const MonteCarlo = () => {
   const [step, setStep] = useState('movieInfo');
   const [selectedShowTime, setSelectedShowTime] = useState(null);
@@ -238,16 +257,19 @@ const MonteCarlo = () => {
   };
 
   const handleShowTimeSelect = (showTime) => {
+    console.log("Selected show time:", showTime);
     setSelectedShowTime(showTime);
     setStep('seatSelection');
   };
 
   const handleSeatCountSelect = (count) => {
+    console.log("Selected seat count:", count);
     setSelectedSeatCount(count);
     setStep('confirmation');
   };
 
   const handleBackClick = () => {
+    console.log("Going back from step:", step);
     if (step === 'confirmation') setStep('seatSelection');
     else if (step === 'seatSelection') setStep('showTimes');
     else if (step === 'showTimes') setStep('movieInfo');
@@ -276,6 +298,8 @@ const MonteCarlo = () => {
           onSeatCountSelect={handleSeatCountSelect}
           selectedSeatCount={selectedSeatCount}
           onBackClick={handleBackClick}
+        />
+      )}
       {step === 'confirmation' && (
         <Confirmation 
           selectedShowTime={selectedShowTime}

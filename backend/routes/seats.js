@@ -3,31 +3,43 @@ const router = express.Router();
 const { client } = require('./../db');
 const { ObjectId } = require('mongodb');
 const db = client.db('myshows');
-const showtime = db.collection('showtime');
+const showtime = db.collection('Showtime');
 
 let chalk;
 (async () => {
   chalk = (await import('chalk')).default;
 })();
 
-// Get showtime details by ID
-router.get('/showtime/:id', async (req, res) => {
-  try {
-    const showtimeId = new ObjectId(req.params.id);
-    const result = await showtime.findOne({ _id: showtimeId });
-    
-    if (!result) {
-      console.log(chalk.red(`Showtime not found with ID: ${req.params.id}`));
-      return res.status(404).json({ message: 'Showtime not found' });
-    }
+// Get showtime details by time
+router.get('/showtime', async (req, res) => {
+  //TODO: Comment all below code and do a dummy function that returns a simple object to check if api endpoint is correct.
+  
+  console.log("GET /showtime route was hit"); // Log to confirm route was hit
+  res.json({ message: "API hit successful!" });
 
-    console.log(chalk.green(`Successfully retrieved showtime: ${req.params.id}`));
-    res.json(result);
+  
+  try {
+     const hardcodedId = "9:00 AM";
+   //const showtimeId = req.params.showTime;
+     console.log("Hardcoded showtime : ",hardcodedId);
+     const result = await showtime.findOne({showTime: hardcodedId });
+     //console.log("result = ",result);   
+     if (!result) {
+       console.log(chalk.red(`Showtime not found with ID: ${}`));
+       return res.status(404).json({ message: 'Showtime not found' });
+     }
+     console.log(chalk.green(`Successfully retrieved showtime: ${}`));
+     res.json(result);
   } catch (error) {
-    console.error(chalk.red('Error fetching showtime:', error));
-    res.status(500).json({ message: 'Internal server error' });
+    console.log(chalk.red("Testing error in catch!")); 
+    //console.error(chalk.red('Error fetching showtime:', error));
+     //res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+
+/*
+
 
 // Get all showtimes for a specific movie
 router.get('/movie/:movieId', async (req, res) => {
@@ -212,5 +224,6 @@ router.put('/update/:id', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
-
+*/
 module.exports = router;
+
