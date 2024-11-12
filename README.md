@@ -2,11 +2,13 @@ The Web App source code has been divided into two parts: Frontend and Backend.
 The Frontend contains the React App needed to run the project. 
 The Backend Contains the Server.
 
+In order to run the app there needs to be a .env file in the backend folder which contains the connection string for the mongo DB database.
+
+
 #### To run Backend
 ```sh
 cd backend/
 npm i
-npm install express
 node server.js
 ```
 

@@ -1,14 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './index.css'
-import RightButton from './rightButton'
-import Movies from './Movies'
-import logo from './assets/logo3.png'
-import ToggleTheme from './ToggleThem /e'
+import './main.css'
+import RightButton from './components/rightButton'
+import Movies from './components/Movies'
+import logo from '../assets/logo3.png'
+import ToggleTheme from './components/ToggleTheme'
 import Signup from './pages/signup';
 import Login from './pages/Login';
-import Heading from './Heading'
+import Heading from './components/Heading'
+import MonteCarlo from './pages/MonteCarlo'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -79,16 +80,9 @@ createRoot(document.getElementById('root')).render(
                 <br></br>
               </h3>
             </div>
-            {/* <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br> */}
           </>
         } />
+        <Route path="/monte-carlo" element={<MonteCarlo />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>

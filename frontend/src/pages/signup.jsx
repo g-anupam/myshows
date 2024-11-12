@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './signup.css';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'; // Ensure the path is correct
+import logo from '../../assets/logo.png'; // Ensure the path is correct
 
 function Signup() {
     // Define state for each input field
@@ -36,6 +36,10 @@ function Signup() {
                 setSuccessMessage('User created successfully!');
                 setError('');
                 // Reset input fields
+        
+                sessionStorage.setItem('userEmail', email);
+                sessionStorage.setItem('userPassword', passwd);
+
                 setFirstName('');
                 setLastName('');
                 setEmail('');
