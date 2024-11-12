@@ -7,7 +7,6 @@ function Heading() {
 
     const handleMouseEnter = () => {
         setIsHover(true)
-        // alert('NIGGA')
     }
 
     const handleMouseLeave = () => {

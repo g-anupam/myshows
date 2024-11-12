@@ -5,7 +5,7 @@ import './index.css'
 import RightButton from './rightButton'
 import Movies from './Movies'
 import logo from './assets/logo3.png'
-import ToggleTheme from './ToggleTheme'
+import ToggleTheme from './ToggleThem /e'
 import Signup from './pages/signup';
 import Login from './pages/Login';
 import Heading from './Heading'
