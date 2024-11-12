@@ -130,13 +130,17 @@ const Confirmation = ({
   // Fetch showtime data on component mount
   useEffect(() => {
     const fetchShowtimeData = async () => {
-      const hardcodedShowTime = "9:00 AM";
-      console.log("Fetching hardcoded showtime data for:", hardcodedShowTime);
       //console.log("Fetching showtime data for:", selectedShowTime);
       try {
-        const encodedShowTime = encodeURIComponent(selectedShowTime);
-        const response = await fetch(`http://localhost:3000/showtime`);
-        
+        //const encodedShowTime = encodeURIComponent(selectedShowTime);
+        console.log(selectedShowTime);
+        const response = await fetch(`http://localhost:3000/showtime`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({ showTime: selectedShowTime })
+    });
         if (!response.ok) {
           throw new Error(`Failed to fetch showtime data: ${response.statusText}`);
         }
