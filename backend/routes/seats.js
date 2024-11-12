@@ -25,7 +25,7 @@ router.get('/showtime', async (req, res) => {
      const result = await showtime.findOne({showTime: hardcodedId });
      //console.log("result = ",result);   
      if (!result) {
-       console.log(chalk.red(`Showtime not found with ID: ${}`));
+       console.log(chalk.red(`Showtime not found with ID: `));
        return res.status(404).json({ message: 'Showtime not found' });
      }
      console.log(chalk.green(`Successfully retrieved showtime: ${}`));
