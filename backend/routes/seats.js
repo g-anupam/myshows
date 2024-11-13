@@ -33,70 +33,9 @@ router.post('/showtime', async (req, res) => {
   }
 });
 
-/*
-
-
-// Get all showtimes for a specific movie
-router.get('/movie/:movieId', async (req, res) => {
-  try {
-    const results = await showtime.find({ movieId: req.params.movieId }).toArray();
-    console.log(chalk.green(`Retrieved ${results.length} showtimes for movie: ${req.params.movieId}`));
-    res.json(results);
-  } catch (error) {
-    console.error(chalk.red('Error fetching movie showtimes:', error));
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
-
-// Create a new showtime
-router.post('/create', async (req, res) => {
-  try {
-    const { movieId, movieName, showDate, showTime, theater, ticketPrice, totalRows, seatsPerRow } = req.body;
-
-    // Generate seat matrix
-    const seatMatrix = [];
-    for (let i = 0; i < totalRows; i++) {
-      const row = String.fromCharCode(65 + i); // Convert 0 to 'A', 1 to 'B', etc.
-      const seats = [];
-      
-      for (let j = 1; j <= seatsPerRow; j++) {
-        seats.push({
-          seatNumber: `${row}${j}`,
-          status: 'available',
-          price: ticketPrice
-        });
-      }
-      
-      seatMatrix.push({
-        row,
-        seats
-      });
-    }
-
-    const newShowtime = {
-      movieId,
-      movieName,
-      showDate,
-      showTime,
-      theater,
-      ticketPrice,
-      totalRows,
-      seatsPerRow,
-      seatMatrix,
-      createdAt: new Date()
-    };
-
-    const result = await showtime.insertOne(newShowtime);
-    console.log(chalk.green(`Created new showtime with ID: ${result.insertedId}`));
-    res.status(201).json({ _id: result.insertedId, ...newShowtime });
-  } catch (error) {
-    console.error(chalk.red('Error creating showtime:', error));
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
-
 // Book seats for a showtime
 router.post('/book', async (req, res) => {
+  console.log("book api hit!");
   try {
     const { showtimeId, seats, userEmail } = req.body;
 
@@ -170,6 +109,69 @@ router.post('/book', async (req, res) => {
   }
 });
 
+/*
+
+
+// Get all showtimes for a specific movie
+router.get('/movie/:movieId', async (req, res) => {
+  try {
+    const results = await showtime.find({ movieId: req.params.movieId }).toArray();
+    console.log(chalk.green(`Retrieved ${results.length} showtimes for movie: ${req.params.movieId}`));
+    res.json(results);
+  } catch (error) {
+    console.error(chalk.red('Error fetching movie showtimes:', error));
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+// Create a new showtime
+router.post('/create', async (req, res) => {
+  try {
+    const { movieId, movieName, showDate, showTime, theater, ticketPrice, totalRows, seatsPerRow } = req.body;
+
+    // Generate seat matrix
+    const seatMatrix = [];
+    for (let i = 0; i < totalRows; i++) {
+      const row = String.fromCharCode(65 + i); // Convert 0 to 'A', 1 to 'B', etc.
+      const seats = [];
+      
+      for (let j = 1; j <= seatsPerRow; j++) {
+        seats.push({
+          seatNumber: `${row}${j}`,
+          status: 'available',
+          price: ticketPrice
+        });
+      }
+      
+      seatMatrix.push({
+        row,
+        seats
+      });
+    }
+
+    const newShowtime = {
+      movieId,
+      movieName,
+      showDate,
+      showTime,
+      theater,
+      ticketPrice,
+      totalRows,
+      seatsPerRow,
+      seatMatrix,
+      createdAt: new Date()
+    };
+
+    const result = await showtime.insertOne(newShowtime);
+    console.log(chalk.green(`Created new showtime with ID: ${result.insertedId}`));
+    res.status(201).json({ _id: result.insertedId, ...newShowtime });
+  } catch (error) {
+    console.error(chalk.red('Error creating showtime:', error));
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+*/
+/*
 // Get available seats for a showtime
 router.get('/available/:showtimeId', async (req, res) => {
   try {

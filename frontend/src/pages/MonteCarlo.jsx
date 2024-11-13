@@ -180,7 +180,7 @@ const Confirmation = ({
     }
 
     try {
-      const response = await fetch('/api/bookings', {
+      const response = await fetch('http://localhost:3000/book', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -191,7 +191,7 @@ const Confirmation = ({
           userEmail: sessionStorage.getItem('userEmail'),
         }),
       });
-
+      console.log("Recieved items : ",showtimeId, seats, userEmail);
       if (!response.ok) throw new Error('Booking failed');
 
       alert('Booking confirmed!');
