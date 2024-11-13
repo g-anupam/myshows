@@ -95,7 +95,7 @@ router.post('/book', async (req, res) => {
         await Promise.all(updatePromises);
       });
 
-      console.log(chalk.green(`Successfully booked seats for showtime: ${showtimeId}`));
+      console.log(chalk.green(`Successfully booked seats for showtime: ${showtimeId}`)); //Currently it works till here
       res.json({ message: 'Seats booked successfully' });
     } catch (error) {
       console.error(chalk.red('Error during booking transaction:', error));
