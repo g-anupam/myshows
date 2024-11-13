@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./MonteCarlo.css";
 import movie6 from '../../assets/movie6.jfif';
@@ -59,12 +59,191 @@ const SeatSelection = ({ selectedShowTime, onSeatCountSelect, selectedSeatCount,
   </div>
 );
 
-const Confirmation = ({ onBackClick }) => (
-  <div>
-    <button onClick={onBackClick}>Back</button>
-    <h3>Confirmation</h3>
-  </div>
-);
+const SeatMatrix = ({ showtime, selectedSeats, onSeatSelect, requiredSeats }) => {
+  const getColorForSeat = (seat) => {
+    if (seat.status === 'booked') return 'bg-gray-400 cursor-not-allowed';
+    if (selectedSeats.includes(seat.seatNumber)) return 'bg-green-500 hover:bg-green-600';
+    return 'bg-blue-500 hover:bg-blue-600';
+  };
+
+  return (
+    <div className="flex flex-col gap-4">
+      <h3 className="text-xl font-bold">Select {requiredSeats} Seats:</h3>
+      <div className="flex justify-center mb-6">
+        <div className="flex gap-4 items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-blue-500"></div>
+            <span>Available</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-green-500"></div>
+            <span>Selected</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-gray-400"></div>
+            <span>Booked</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="flex flex-col gap-2">
+        {showtime.seatMatrix.map((row) => (
+          <div key={row.row} className="flex gap-2 justify-center">
+            <span className="w-8 text-center font-bold">{row.row}</span>
+            <div className="flex gap-2">
+              {row.seats.map((seat) => (
+                <button
+                  key={seat.seatNumber}
+                  disabled={seat.status === 'booked' || 
+                           (selectedSeats.length >= requiredSeats && !selectedSeats.includes(seat.seatNumber))}
+                  onClick={() => onSeatSelect(seat)}
+                  className={`w-8 h-8 rounded ${getColorForSeat(seat)} 
+                            text-white text-sm font-bold
+                            disabled:opacity-50 disabled:cursor-not-allowed`}
+                >
+                  {seat.seatNumber.replace(row.row, '')}
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div className="mt-4 text-center">
+        <p>Selected Seats: {selectedSeats.join(', ') || 'None'}</p>
+        <p>Total Price: ${(selectedSeats.length * showtime.ticketPrice).toFixed(2)}</p>
+      </div>
+    </div>
+  );
+};
+
+const Confirmation = ({ 
+  selectedShowTime, 
+  selectedSeatCount,
+  onBackClick,
+}) => {
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [showtime, setShowtime] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch showtime data on component mount
+  useEffect(() => {
+    const fetchShowtimeData = async () => {
+      //console.log("Fetching showtime data for:", selectedShowTime);
+      try {
+        //const encodedShowTime = encodeURIComponent(selectedShowTime);
+        console.log(selectedShowTime);
+        const response = await fetch(`http://localhost:3000/showtime`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({ showTime: selectedShowTime })
+    });
+        if (!response.ok) {
+          throw new Error(`Failed to fetch showtime data: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log("Showtime data fetched successfully:", data);
+        setShowtime(data);
+      } catch (err) {
+        console.error("Error fetching showtime data:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchShowtimeData();
+  }, [selectedShowTime]);
+
+  // Handle seat selection
+  const handleSeatSelect = (seat) => {
+    setSelectedSeats(prev => {
+      if (prev.includes(seat.seatNumber)) {
+        return prev.filter(s => s !== seat.seatNumber);
+      }
+      if (prev.length >= selectedSeatCount) {
+        return prev;
+      }
+      return [...prev, seat.seatNumber];
+    });
+  };
+
+  // Confirm booking by sending selected seats to the server
+  const handleConfirmBooking = async () => {
+    if (selectedSeats.length !== selectedSeatCount) {
+      alert('Please select all required seats');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/book', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          showtimeId: showtime._id,
+          seats: selectedSeats,
+          userEmail: sessionStorage.getItem('userEmail'),
+        }),
+      });
+      console.log("Recieved items : ",showtimeId, seats, userEmail);
+      if (!response.ok) throw new Error('Booking failed');
+
+      alert('Booking confirmed!');
+    } catch (err) {
+      alert('Failed to confirm booking: ' + err.message);
+    }
+  };
+
+  // Render loading, error, or main content
+  if (loading) {
+    console.log("Loading showtime data...");
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    console.error("Error:", error);
+    return <div>Error: {error}</div>;
+  }
+  if (!showtime) {
+    console.log("No showtime data available");
+    return <div>No showtime data available</div>;
+  }
+
+  return (
+    <div className="p-4">
+      <button onClick={onBackClick} className="mb-4">Back</button>
+      
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-bold">Seat Selection</h2>
+        <p>Show Time: {selectedShowTime}</p>
+        <p>Number of Seats: {selectedSeatCount}</p>
+      </div>
+
+      <SeatMatrix
+        showtime={showtime}
+        selectedSeats={selectedSeats}
+        onSeatSelect={handleSeatSelect}
+        requiredSeats={selectedSeatCount}
+      />
+
+      <div className="mt-6 text-center">
+        <button
+          onClick={handleConfirmBooking}
+          disabled={selectedSeats.length !== selectedSeatCount}
+          className="bg-blue-500 text-white px-6 py-2 rounded
+                     disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+          Confirm Booking
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const MonteCarlo = () => {
   const [step, setStep] = useState('movieInfo');
@@ -82,16 +261,19 @@ const MonteCarlo = () => {
   };
 
   const handleShowTimeSelect = (showTime) => {
+    console.log("Selected show time:", showTime);
     setSelectedShowTime(showTime);
     setStep('seatSelection');
   };
 
   const handleSeatCountSelect = (count) => {
+    console.log("Selected seat count:", count);
     setSelectedSeatCount(count);
     setStep('confirmation');
   };
 
   const handleBackClick = () => {
+    console.log("Going back from step:", step);
     if (step === 'confirmation') setStep('seatSelection');
     else if (step === 'seatSelection') setStep('showTimes');
     else if (step === 'showTimes') setStep('movieInfo');
@@ -122,7 +304,13 @@ const MonteCarlo = () => {
           onBackClick={handleBackClick}
         />
       )}
-      {step === 'confirmation' && <Confirmation onBackClick={handleBackClick} />}
+      {step === 'confirmation' && (
+        <Confirmation 
+          selectedShowTime={selectedShowTime}
+          selectedSeatCount={selectedSeatCount}
+          onBackClick={handleBackClick}
+        />
+      )}
     </div>
   );
 };
