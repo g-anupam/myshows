@@ -146,7 +146,7 @@ const Confirmation = ({
         }
         
         const data = await response.json();
-        console.log("Showtime data fetched successfully:", data);
+        console.log("Showtime data fetched successfully within /showtime api call:", data);
         setShowtime(data);
       } catch (err) {
         console.error("Error fetching showtime data:", err);
@@ -191,7 +191,8 @@ const Confirmation = ({
           userEmail: sessionStorage.getItem('userEmail'),
         }),
       });
-      console.log("Recieved items : ",showtimeId, seats, userEmail);
+      console.log("logging right after the api call");
+      console.log("Recieved items : ",showtime._id, selectedSeats, sessionStorage.getItem("userEmail"));
       if (!response.ok) throw new Error('Booking failed');
 
       alert('Booking confirmed!');
@@ -238,7 +239,7 @@ const Confirmation = ({
           className="bg-blue-500 text-white px-6 py-2 rounded
                      disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
-          Confirm Booking
+          Proceed to Payments
         </button>
       </div>
     </div>
