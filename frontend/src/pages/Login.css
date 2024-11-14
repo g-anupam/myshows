@@ -74,6 +74,7 @@
 
 /* Signup link styling */
 .signup-link {
+    color: black;
     text-align: center;
     margin-top: 15px;
 }

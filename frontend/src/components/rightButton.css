@@ -35,3 +35,7 @@ html {
     color: #000;
     /* Set the color of the icon */
 }
+
+.light-theme #b1 {
+    background-color: grey;
+}
