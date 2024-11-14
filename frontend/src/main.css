@@ -2,89 +2,24 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.contentdiv1 {
-  position: absolute;
-  top: 65px;
-  left: 27%;
-}
-
-/* #heading {
-  font-size: 55px;
-  font-family: 'Courier New', Courier, monospace;
-} */
-
-.dark-theme {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-}
-
-.dark-theme button {
-  background-color: #1a1a1a;
-}
-
-.dark-theme #heading {
-  color: rgba(255, 255, 255, 0.87);
-}
-
-.light-theme {
-  color: black;
-  background-color: #ffffff;
-  min-height: 100vh;
-  /*takes care of vertical overflow*/
-}
-
-.light-theme button {
-  background-color: #f9f9f9;
-  color: black;
-}
-
-.light-theme a:hover {
-  color: red;
-}
-
-.light-theme #heading {
-  color: black
-}
-
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+/* Fix the logo on the top-left corner */
 .logo-container {
+  position: absolute !important;
+  top: 80px;
+  left: 10px;
   display: flex;
-  justify-content: left;
-  margin: 60px 30px;
+  align-items: center;
+  z-index: 1000;
+  /* Ensures logo is on top of other elements */
 }
 
 .logo-image {
@@ -92,23 +27,58 @@ h1 {
   height: auto;
 }
 
-/* .contentdiv {
-  position: absolute;
-  top: 0px;
-  left: 39%;
-} */
-
-#desc {
-  font-size: 30px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-
+/* Padding to ensure content doesn’t overlap with the logo */
+.contentdiv1,
+#movies,
 #about {
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  padding-top: 80px;
+  /* Adjust based on logo size */
 }
 
+/* Dark Theme */
+.dark-theme {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+.dark-theme #btoggle {
+  background-color: white;
+}
+
+.dark-theme #heading {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+/* Light Theme */
+.light-theme {
+  color: black;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.light-theme button {
+  background-color: black;
+  color: white;
+}
+
+.light-theme #heading {
+  color: black;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
 
 button {
   border-radius: 8px;
@@ -116,19 +86,12 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
   cursor: pointer;
-  transition: border-color 0.25s;
 }
 
 button:hover {
   border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {

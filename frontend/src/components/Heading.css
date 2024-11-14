@@ -1,9 +1,9 @@
 .contentdiv {
     display: flex;
-    justify-content: center; 
-    align-items: flex-start; 
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
-    padding-top: 10px; 
+    padding-top: 10px;
     position: absolute;
     top: 0;
 }
@@ -16,5 +16,5 @@
 }
 
 #heading:hover {
-    color:gold;
+    color: gold;
 }

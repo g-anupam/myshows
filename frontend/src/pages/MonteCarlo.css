@@ -1,3 +1,8 @@
 /*TODO: Complete The CSS for Monte-Carlo movie.*/
+.poster-container {
+    text-align: center;
+}
 
-
+.movie-info-card {
+    padding-left: 10px;
+}
