@@ -48,6 +48,7 @@
 
 .search-bar {
     height: 45px;
+    align-items: center;
     width: 500px;
     background-color: rgb(235, 227, 179);
     border-radius: 10px;
@@ -61,5 +62,7 @@
 
 .search-button {
     font-family: 'Courier New', Courier, monospace;
+    margin: 10px;
+    padding-left: 20px;
     font-weight: 700;
 }
