@@ -39,6 +39,12 @@
     margin-top: 20px;
 }
 
+.no-results {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: blue;
+}
+
 .top-bar {
     display: flex;
     justify-content: center;
