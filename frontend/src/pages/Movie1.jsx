@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import "./MonteCarlo.css";
 import movie7 from "../../assets/movie7.jpg";
+import ShowTimes from "../components/ShowTimes.jsx";
 
-//To make new movies copy paste this file and edit MovieInfo!
-const MovieInfo = ({ onBuyTicketsClick }) => (
+const MovieInfo = ({ onBuyTicketsClick }) => (  // Note the prop name
   <>
     <div className="poster-container">
       <img src={movie7} alt="Monte Carlo Poster" />
@@ -28,12 +28,13 @@ const MovieInfo = ({ onBuyTicketsClick }) => (
   </>
 );
 
-
 const Montecarlo = () => {
   const [step, setStep] = useState('movieInfo');
   const [selectedShowTime, setSelectedShowTime] = useState(null);
   const [selectedSeatCount, setSelectedSeatCount] = useState(null);
   const [requiresLogin, setRequiresLogin] = useState(false);
+
+  const showTimes = ['9:00 AM', '10:30 AM', '12:00 PM', '3:30 PM', '5:00 PM', '7:45 PM'];
 
   const handleBuyClick = () => {
     const userEmail = sessionStorage.getItem('userEmail');
@@ -41,7 +42,7 @@ const Montecarlo = () => {
       setRequiresLogin(true);
       return;
     }
-    setStep('showTimes');
+    setStep('showTimes');  // Note the capitalization
   }
 
   const handleShowTimeSelect = (showTime) => {
@@ -68,20 +69,21 @@ const Montecarlo = () => {
   }
 
   if (requiresLogin) {
-    return <Link to="/login" className = "loginLink"> Please Login to continue </Link>;
+    return <Link to="/login" className="loginLink"> Please Login to continue </Link>;
   }
 
   return (
     <>
-      {step === "movieInfo" && <MovieInfo onBuyClick = {handleBuyClick} />}
-      {step === "showtimes" && (
+      <h1>Hello, world </h1>
+      {step === "movieInfo" && <MovieInfo onBuyTicketsClick={handleBuyClick} />}  {/* Fixed prop name */}
+      {step === "showTimes" && (  // Fixed capitalization
         <ShowTimes 
-          showTimes = {showTimes}
-          onShowTimeSelect = {handleShowTimeSelect}
-          selectedShowTime = {selectedShowTime}
-          onBackClick = {handleBackClick}
+          showTimes={showTimes}
+          onShowTimeSelect={handleShowTimeSelect}
+          selectedShowTime={selectedShowTime}
+          onBackClick={handleBackClick}
         />
-      )};
+      )}  {/* Removed semicolon */}
     </>
   )
 }
