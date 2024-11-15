@@ -10,7 +10,6 @@ import ToggleTheme from './components/ToggleTheme'
 import Signup from './pages/signup';
 import Login from './pages/Login';
 import MonteCarlo from './pages/MonteCarlo';
-import Montecarlo from "./pages/del.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
