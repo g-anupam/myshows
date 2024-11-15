@@ -3,8 +3,10 @@ import {Link} from 'react-router-dom';
 import "./MonteCarlo.css";
 import movie7 from "../../assets/movie7.jpg";
 import ShowTimes from "../components/ShowTimes.jsx";
+import SeatSelection from "../components/SeatSelection.jsx";
+import Confirmation from "../components/Confirmation.jsx";
 
-const MovieInfo = ({ onBuyTicketsClick }) => (  // Note the prop name
+const MovieInfo = ({ onBuyTicketsClick }) => (  
   <>
     <div className="poster-container">
       <img src={movie7} alt="Monte Carlo Poster" />
@@ -42,7 +44,7 @@ const Montecarlo = () => {
       setRequiresLogin(true);
       return;
     }
-    setStep('showTimes');  // Note the capitalization
+    setStep('showTimes'); 
   }
 
   const handleShowTimeSelect = (showTime) => {
@@ -74,16 +76,30 @@ const Montecarlo = () => {
 
   return (
     <>
-      <h1>Hello, world </h1>
-      {step === "movieInfo" && <MovieInfo onBuyTicketsClick={handleBuyClick} />}  {/* Fixed prop name */}
-      {step === "showTimes" && (  // Fixed capitalization
+      {step === "movieInfo" && <MovieInfo onBuyTicketsClick={handleBuyClick} />}  
+      {step === "showTimes" && (  
         <ShowTimes 
           showTimes={showTimes}
           onShowTimeSelect={handleShowTimeSelect}
           selectedShowTime={selectedShowTime}
           onBackClick={handleBackClick}
         />
-      )}  {/* Removed semicolon */}
+      )}  
+      {step === 'seatSelection' && (
+        <SeatSelection
+          selectedShowTime={selectedShowTime}
+          onSeatCountSelect={handleSeatCountSelect}
+          selectedSeatCount={selectedSeatCount}
+          onBackClick={handleBackClick}
+        />
+      )}
+      {step === 'confirmation' && (
+        <Confirmation
+          selectedShowTime={selectedShowTime}
+          selectedSeatCount={selectedSeatCount}
+          onBackClick={handleBackClick}
+        />
+      )}
     </>
   )
 }
