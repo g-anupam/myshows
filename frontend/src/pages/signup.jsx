@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './signup.css';
+import userIcon from '../../assets/user-icon1.png';
 import { Link } from 'react-router-dom';
 
 function Signup() {
@@ -64,6 +65,9 @@ function Signup() {
             <div className='signup-page'>
                 <div className="signup-container">
                     <form className='signup-form' onSubmit={handleSubmit}>
+                        <div className="icon-container">
+                            <img src={userIcon} alt="User Icon" className="user-icon" />
+                        </div>
                         <label>First Name:</label>
                         <input
                             type="text"
