@@ -1,8 +1,27 @@
-/*TODO: Complete The CSS for Monte-Carlo movie.*/
-.poster-container {
-    text-align: center;
+/* Adjust the size of the image */
+.poster-container img {
+    width: 30%;
+    /* Make the image responsive */
+    max-width: 500px;
+    /* Set a max-width to limit the size */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin: 0 auto;
+    /* Center the image horizontally */
+    display: block;
+    /* Ensure the image behaves like a block-level element */
 }
 
+/* Add padding and center the movie info card */
 .movie-info-card {
     padding-left: 10px;
+    text-align: left;
+    margin-top: 20px;
+    /* Space between image and movie details */
+}
+
+.movie-info-card h2,
+h3 {
+    text-decoration: underline;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

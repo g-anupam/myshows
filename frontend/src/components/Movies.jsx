@@ -6,6 +6,7 @@ import movie3 from '../../assets/movie3.jfif';
 import movie4 from '../../assets/movie4.jfif';
 import movie5 from '../../assets/movie5.jfif';
 import movie6 from '../../assets/movie6.jfif';
+import movie7 from '../../assets/movie7.jpg';
 import { Link } from 'react-router-dom';
 
 function Movies() {
@@ -16,23 +17,11 @@ function Movies() {
                     {/* <img src={logo} alt="Logo" className="logo" /> */}
                     <div className='search-container'>
                         <input type="text" placeholder="Movie in mind?" className="search-bar" />
-                        <button className='search-button'>Search</button>
+                        <button className='search-button'>
+                            <i className='fas fa-search'></i>
+                        </button>
                     </div>
-                    {/* <a href="/userprofile" className="login-link">
-                    <i className="fas fa-user"></i> Login
-                </a> */}
                 </div>
-                {/* <nav>
-                <div id='menu'>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href='#Movies'>Movies</a></li>
-                        <li><a href='#concerts'>Concerts</a></li>
-                        <li><a href='#comedy'>Comedy</a></li>
-                        <li><a href='#sports'>Sports</a></li>
-                    </ul>
-                </div>
-            </nav> */}
             </header>
 
             {/* <h1>Welcome to MovieHub</h1> */}
@@ -40,10 +29,10 @@ function Movies() {
 
             <div className='recommended-movies'>
                 <Link to="/monte-carlo" className="movie-item">
-                  <div>
-                    <img src={movie6} alt="Movie 6" className="poster" id="m1" />
-                    <p className="movie-name" id="md1">Monte Carlo</p>
-                  </div>
+                    <div>
+                        <img src={movie7} alt="Movie 7" className="poster" id="m1" />
+                        <p className="movie-name" id="md1">Monte Carlo</p>
+                    </div>
                 </Link>
                 <div className='movie-item'>
                     <img src={movie2} alt='Movie 2' className='poster' id="m2" />

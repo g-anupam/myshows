@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./MonteCarlo.css";
-import movie6 from '../../assets/movie6.jfif';
+import movie7 from '../../assets/movie7.jpg';
 
 const MovieInfo = ({ onBuyTicketsClick }) => (
   <>
     <div className="poster-container">
-      <img src={movie6} alt="Monte Carlo Poster" />
+      <img src={movie7} alt="Monte Carlo Poster" />
     </div>
     <div className="movie-info-card">
       <h2>Monte Carlo</h2>
@@ -85,7 +85,7 @@ const SeatMatrix = ({ showtime, selectedSeats, onSeatSelect, requiredSeats }) =>
           </div>
         </div>
       </div>
-      
+
       <div className="flex flex-col gap-2">
         {showtime.seatMatrix.map((row) => (
           <div key={row.row} className="flex gap-2 justify-center">
@@ -94,8 +94,8 @@ const SeatMatrix = ({ showtime, selectedSeats, onSeatSelect, requiredSeats }) =>
               {row.seats.map((seat) => (
                 <button
                   key={seat.seatNumber}
-                  disabled={seat.status === 'booked' || 
-                           (selectedSeats.length >= requiredSeats && !selectedSeats.includes(seat.seatNumber))}
+                  disabled={seat.status === 'booked' ||
+                    (selectedSeats.length >= requiredSeats && !selectedSeats.includes(seat.seatNumber))}
                   onClick={() => onSeatSelect(seat)}
                   className={`w-8 h-8 rounded ${getColorForSeat(seat)} 
                             text-white text-sm font-bold
@@ -108,7 +108,7 @@ const SeatMatrix = ({ showtime, selectedSeats, onSeatSelect, requiredSeats }) =>
           </div>
         ))}
       </div>
-      
+
       <div className="mt-4 text-center">
         <p>Selected Seats: {selectedSeats.join(', ') || 'None'}</p>
         <p>Total Price: ${(selectedSeats.length * showtime.ticketPrice).toFixed(2)}</p>
@@ -117,8 +117,8 @@ const SeatMatrix = ({ showtime, selectedSeats, onSeatSelect, requiredSeats }) =>
   );
 };
 
-const Confirmation = ({ 
-  selectedShowTime, 
+const Confirmation = ({
+  selectedShowTime,
   selectedSeatCount,
   onBackClick,
 }) => {
@@ -139,12 +139,12 @@ const Confirmation = ({
           headers: {
             'Content-Type': 'application/json'
           },
-        body: JSON.stringify({ showTime: selectedShowTime })
-    });
+          body: JSON.stringify({ showTime: selectedShowTime })
+        });
         if (!response.ok) {
           throw new Error(`Failed to fetch showtime data: ${response.statusText}`);
         }
-        
+
         const data = await response.json();
         console.log("Showtime data fetched successfully within /showtime api call:", data);
         setShowtime(data);
@@ -192,7 +192,7 @@ const Confirmation = ({
         }),
       });
       console.log("logging right after the api call");
-      console.log("Recieved items : ",showtime._id, selectedSeats, sessionStorage.getItem("userEmail"));
+      console.log("Recieved items : ", showtime._id, selectedSeats, sessionStorage.getItem("userEmail"));
       if (!response.ok) throw new Error('Booking failed');
 
       alert('Booking confirmed!');
@@ -218,7 +218,7 @@ const Confirmation = ({
   return (
     <div className="p-4">
       <button onClick={onBackClick} className="mb-4">Back</button>
-      
+
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold">Seat Selection</h2>
         <p>Show Time: {selectedShowTime}</p>
@@ -306,7 +306,7 @@ const MonteCarlo = () => {
         />
       )}
       {step === 'confirmation' && (
-        <Confirmation 
+        <Confirmation
           selectedShowTime={selectedShowTime}
           selectedSeatCount={selectedSeatCount}
           onBackClick={handleBackClick}
