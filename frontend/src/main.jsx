@@ -10,7 +10,7 @@ import ToggleTheme from './components/ToggleTheme'
 import Signup from './pages/signup';
 import Login from './pages/Login';
 import MonteCarlo from './pages/MonteCarlo';
-import Montecarlo from "./pages/Movie1";
+import Montecarlo from "./pages/del.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -58,9 +58,8 @@ createRoot(document.getElementById('root')).render(
             </>
           } />
           <Route path="/monte-carlo" element={<MonteCarlo />} />
-         <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/montecarlo" element={<Montecarlo />} />
         </Routes>
       </main>
     </Router>

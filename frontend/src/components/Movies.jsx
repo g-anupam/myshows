@@ -5,7 +5,7 @@ import movie9 from '../../assets/movie9.jpg';
 import movie10 from '../../assets/movie10.jpg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import Montecarlo from "../pages/Movie1.jsx";
+import Montecarlo from "../pages/MonteCarlo.jsx";
 
 function Movies() {
     const moviesList = [
@@ -69,11 +69,6 @@ function Movies() {
                 ) : (
                     <p className="no-results">Movie not found</p>
                 )}
-            </div>
-            <div className="button-container">
-                <Link to="/monteCarlo" className="special-button">
-                  Go to Tester
-                </Link>
             </div>
         </div>
     );
