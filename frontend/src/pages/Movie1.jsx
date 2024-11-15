@@ -29,7 +29,7 @@ const MovieInfo = ({ onBuyTicketsClick }) => (
 );
 
 
-const monteCarlo = () => {
+const Montecarlo = () => {
   const [step, setStep] = useState('movieInfo');
   const [selectedShowTime, setSelectedShowTime] = useState(null);
   const [selectedSeatCount, setSelectedSeatCount] = useState(null);
@@ -85,3 +85,5 @@ const monteCarlo = () => {
     </>
   )
 }
+
+export default Montecarlo;
