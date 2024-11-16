@@ -12,7 +12,12 @@ npm i
 node server.js
 ```
 
-
+#### To run the Stripe test API
+```sh
+npm install stripe  (for backend)
+npm install @stripe/react-stripe-js @stripe/stripe-js  (for frontend)
+```
+Use the standard public and private keys offered by the test API(refer to [docs](https://docs.stripe.com/testing))
 
 #### To Run Frontend
 Pull the latest version from github
