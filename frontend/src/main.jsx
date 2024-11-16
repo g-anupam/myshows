@@ -1,4 +1,3 @@
-// main.jsx
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
@@ -10,11 +9,16 @@ import ToggleTheme from './components/ToggleTheme'
 import Signup from './pages/signup';
 import Login from './pages/Login';
 import MonteCarlo from './pages/MonteCarlo';
+import Payments from './pages/Payments';
+import BookedShows from './pages/BookedShows';
+import FirstName from './components/FirstName';
+import StripePayment from './pages/StripePayment';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
       <ToggleTheme />
+      <FirstName />
       <header className="header-container">
         <div className="logo-container">
           <img src={logo} alt="TicketVerse Logo" className="logo-image" />
@@ -59,6 +63,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="/monte-carlo" element={<MonteCarlo />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/payments" element={<Payments />} />
+          <Route path="/bookedshows" element={<BookedShows />} />
+          <Route path="/payments" element={<Payments />} />
+          <Route path="/stripepayment" element={<StripePayment />} />
         </Routes>
       </main>
     </Router>

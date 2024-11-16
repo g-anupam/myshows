@@ -20,7 +20,7 @@
     text-align: center;
     left: 50%;
     /* Adjusted for center alignment */
-    top: 200px;
+    top: 260px;
     transform: translateX(-50%);
     /* Center the container horizontally */
 }

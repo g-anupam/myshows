@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SeatMatrix from "./SeatMatrix.jsx";
 
 const Confirmation = ({
@@ -10,6 +11,7 @@ const Confirmation = ({
   const [showtime, setShowtime] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Fetch showtime data on component mount
   useEffect(() => {
@@ -18,7 +20,7 @@ const Confirmation = ({
       try {
         //const encodedShowTime = encodeURIComponent(selectedShowTime);
         console.log(selectedShowTime);
-        const response = await fetch(`http://localhost:3000/showtime`, {
+        const response = await fetch(`http://localhost:3000/seats/showtime`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -64,7 +66,7 @@ const Confirmation = ({
     }
 
     try {
-      const response = await fetch('http://localhost:3000/book', {
+      const response = await fetch('http://localhost:3000/seats/book', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,10 +81,13 @@ const Confirmation = ({
       console.log("Recieved items : ", showtime._id, selectedSeats, sessionStorage.getItem("userEmail"));
       if (!response.ok) throw new Error('Booking failed');
 
-      alert('Booking confirmed!');
+      // alert('Booking confirmed!');
+      //after this go to Payments.jsx page
+      navigate("/payments");
     } catch (err) {
       alert('Failed to confirm booking: ' + err.message);
     }
+
   };
 
   // Render loading, error, or main content
