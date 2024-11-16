@@ -6,7 +6,10 @@
 }
 
 #btoggle {
-    position: fixed;   /*fixed gets it done*/
-    z-index: 900;  /*essentially giving it a virtual z axis so that it can stay above the rest
+    position: absolute;
+    border-color: black;
+    /*fixed gets it done*/
+    z-index: 90;
+    /*essentially giving it a virtual z axis so that it can stay above the rest
     of the elements*/
 }

@@ -1,6 +1,7 @@
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import userIcon from '../../assets/user-icon1.png'; // Ensure this path matches your folder structure
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -47,6 +48,11 @@ const Login = () => {
             </header>
             <div className="login-container">
                 <form className="login-form" onSubmit={handleLogin}>
+                    {/* User icon */}
+                    <div className="icon-container">
+                        <img src={userIcon} alt="User Icon" className="user-icon" />
+                    </div>
+
                     <div className="input-container">
                         <label>Email Address:</label>
                         <input

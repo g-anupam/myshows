@@ -1,3 +1,4 @@
+/* Base Styles */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,43 +12,119 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fix the logo on the top-left corner */
-.logo-container {
-  position: absolute !important;
-  top: 80px;
-  left: 10px;
+#desc {
+  text-align: center;
+  font-size: 1.8rem;
+  /* color: #213547; */
+  margin-top: 1rem;
+}
+
+/* Header styling */
+.header-container {
+  margin-top: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(192, 5, 5);
+  color: #fff;
+  position: relative;
   z-index: 1000;
-  /* Ensures logo is on top of other elements */
+}
+
+.heading-wrapper {
+  flex: 1;
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
 .logo-image {
-  width: 130px;
+  width: 70px;
   height: auto;
 }
 
-/* Padding to ensure content doesn’t overlap with the logo */
-.contentdiv1,
-#movies,
-#about {
-  text-align: center;
-  padding-top: 80px;
-  /* Adjust based on logo size */
+.site-heading {
+  font-size: 3em;
+  margin: 0;
+  color: gold;
 }
 
-/* Dark Theme */
+/* About Us Section */
+#about {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#about h2 {
+  font-size: 2rem;
+  color: #213547;
+  margin-bottom: 1rem;
+}
+
+#about p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  padding: 0 1rem;
+}
+
+#about h3 {
+  font-size: 1.5rem;
+  color: #213547;
+  margin-top: 2rem;
+}
+
+#about #names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#about #names a {
+  color: #646cff;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  margin: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+#about #names a:hover {
+  color: #535bf2;
+  text-decoration: underline;
+}
+
+/* Dark Theme Adjustments */
 .dark-theme {
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 }
 
-.dark-theme #btoggle {
-  background-color: white;
+.dark-theme #about {
+  background-color: #333;
+  color: #e0e0e0;
 }
 
-.dark-theme #heading {
-  color: rgba(255, 255, 255, 0.87);
+.dark-theme #about p,
+.dark-theme #about h2,
+.dark-theme #about h3,
+.dark-theme #about #names a {
+  color: #e0e0e0;
+}
+
+.dark-theme #about #names a:hover {
+  color: #b3b3ff;
 }
 
 /* Light Theme */
@@ -62,10 +139,7 @@
   color: white;
 }
 
-.light-theme #heading {
-  color: black;
-}
-
+/* Link Styling */
 a {
   font-weight: 500;
   color: #646cff;
@@ -75,18 +149,13 @@ a:hover {
   color: #535bf2;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+/* Button Styling */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  /* background-color: #1a1a1a; */
   cursor: pointer;
 }
 
@@ -94,6 +163,7 @@ button:hover {
   border-color: #646cff;
 }
 
+/* Responsive Styles */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

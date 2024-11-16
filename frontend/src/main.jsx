@@ -1,6 +1,7 @@
+// main.jsx
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './main.css'
 import RightButton from './components/rightButton'
 import Movies from './components/Movies'
