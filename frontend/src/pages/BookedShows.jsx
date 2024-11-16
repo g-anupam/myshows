@@ -41,7 +41,7 @@ function BookedShows() {
     }, [userEmail]);
 
     if (loading) {
-        return <div>Loading ...</div>;
+        return <div>Please sign in to view booked shows</div>;
     }
     if (error) {
         return <div>Error: {error}</div>;

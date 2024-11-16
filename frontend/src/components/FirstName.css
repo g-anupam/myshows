@@ -1,0 +1,9 @@
+#greeting {
+    position: relative;
+    left: 83vh;
+    top: 2vh;
+    font-size: 24px;
+    font-weight: 700;
+    color: skyblue;
+    font-family: 'Courier New', Courier, monospace;
+}
