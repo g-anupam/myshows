@@ -9,11 +9,15 @@ function Payments() {
         alert("Booking confirmed!");
     }
 
+    const handleStripeClick = () => {
+        navigate("/stripepayment");
+    }
+
     return (
         <div className="payment-div">
             <p>Select the method to pay</p>
-            <button id="upi">STRIPE</button>
-            <button onClick={handleCCClick} id="CC">CC</button>
+            <button onClick={handleStripeClick} id="upi">STRIPE(CC)</button>
+            <button onClick={handleCCClick} id="CC">UPI(MOCK)</button>
         </div>
     );
 }

@@ -12,6 +12,7 @@ import MonteCarlo from './pages/MonteCarlo';
 import Payments from './pages/Payments';
 import BookedShows from './pages/BookedShows';
 import FirstName from './components/FirstName';
+import StripePayment from './pages/StripePayment';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -65,6 +66,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/payments" element={<Payments />} />
           <Route path="/bookedshows" element={<BookedShows />} />
           <Route path="/payments" element={<Payments />} />
+          <Route path="/stripepayment" element={<StripePayment />} />
         </Routes>
       </main>
     </Router>
