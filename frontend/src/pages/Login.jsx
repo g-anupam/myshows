@@ -13,7 +13,7 @@ const Login = () => {
         setError(''); // Clear any previous errors
 
         try {
-            const response = await fetch('http://localhost:3000/login', {
+            const response = await fetch('http://localhost:3000/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, passwd }),
@@ -27,6 +27,9 @@ const Login = () => {
             const data = await response.json();
             sessionStorage.setItem('userEmail', email);
             sessionStorage.setItem('userPassword', passwd); // Matching with signup storage
+            console.log("first name from login page: ", data.user.firstName);
+            sessionStorage.setItem('userFirstName', data.user.firstName);
+            console.log('session stored first name: ', sessionStorage.getItem('userFirstName'));
 
             navigate('/'); // Redirect to the home page after successful login
         } catch (error) {

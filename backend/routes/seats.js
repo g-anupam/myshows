@@ -4,6 +4,7 @@ const { client } = require('./../db');
 const { ObjectId } = require('mongodb');
 const db = client.db('myshows');
 const showtime = db.collection('Showtime');
+const bookings = db.collection('Bookings');
 
 let chalk;
 (async () => {
@@ -93,6 +94,20 @@ router.post('/book', async (req, res) => {
         });
 
         await Promise.all(updatePromises);
+        
+
+        //adding the booking info to the Bookings collection
+        const bookingRecord = {
+          showtimeId,
+          seats,
+          userEmail,
+          bookingDate: new Date()
+        };
+
+        console.log("inserting booking record: ", bookingRecord);
+        const result = await bookings.insertOne(bookingRecord);  //stroring the booking info in a bookings
+        //collection
+        console.log("booking record inserted", result);
       });
 
       console.log(chalk.green(`Successfully booked seats for showtime: ${showtimeId}`)); //Currently it works till here

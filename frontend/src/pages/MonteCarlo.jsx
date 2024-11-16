@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./MonteCarlo.css";
+import Payments from "./Payments";
 import movie6 from '../../assets/movie6.jfif';
 
 const MovieInfo = ({ onBuyTicketsClick }) => (
@@ -126,6 +127,7 @@ const Confirmation = ({
   const [showtime, setShowtime] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Fetch showtime data on component mount
   useEffect(() => {
@@ -134,7 +136,7 @@ const Confirmation = ({
       try {
         //const encodedShowTime = encodeURIComponent(selectedShowTime);
         console.log(selectedShowTime);
-        const response = await fetch(`http://localhost:3000/showtime`, {
+        const response = await fetch(`http://localhost:3000/seats/showtime`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -180,7 +182,7 @@ const Confirmation = ({
     }
 
     try {
-      const response = await fetch('http://localhost:3000/book', {
+      const response = await fetch('http://localhost:3000/seats/book', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -188,14 +190,15 @@ const Confirmation = ({
         body: JSON.stringify({
           showtimeId: showtime._id,
           seats: selectedSeats,
-          userEmail: sessionStorage.getItem('userEmail'),
+          userEmail: sessionStorage.getItem('userEmail'),  //////
         }),
       });
       console.log("logging right after the api call");
       console.log("Recieved items : ",showtime._id, selectedSeats, sessionStorage.getItem("userEmail"));
       if (!response.ok) throw new Error('Booking failed');
 
-      alert('Booking confirmed!');
+      // alert('Booking confirmed!');
+      navigate('/payments');
     } catch (err) {
       alert('Failed to confirm booking: ' + err.message);
     }
@@ -253,7 +256,7 @@ const MonteCarlo = () => {
   const [requiresLogin, setRequiresLogin] = useState(false);
 
   const handleBuyTicketsClick = () => {
-    const userEmail = sessionStorage.getItem('userEmail');
+    const userEmail = sessionStorage.getItem('userEmail'); //////
     if (!userEmail) {
       setRequiresLogin(true);
       return;

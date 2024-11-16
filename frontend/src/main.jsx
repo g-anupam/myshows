@@ -10,21 +10,21 @@ import Signup from './pages/signup';
 import Login from './pages/Login';
 import Heading from './components/Heading'
 import MonteCarlo from './pages/MonteCarlo'
+import Payments from './pages/Payments';
+import BookedShows from './pages/BookedShows';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ToggleTheme />
-    {/* <div className="logo-container">
-      <img src={logo} alt="TicketVerse Logo" className="logo-image" />
-    </div> */}
     <Router>
-      <div className="logo-container">
+      {/* <div className="logo-container">
         <img src={logo} alt="TicketVerse Logo" className="logo-image" />
-      </div>
+      </div> */}
       <Heading />
       <div class="contentdiv1">
         <h2 id="desc">Your Front Row Seat to Every Adventure!</h2>
       </div>
+      <div id="uname"></div>
       <Routes>
         <Route path="/" element={   //the main page stuff put here directly 
           <>
@@ -53,6 +53,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/monte-carlo" element={<MonteCarlo />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/payments" element={<Payments />} />
+        <Route path="/bookedshows" element={<BookedShows />} />
       </Routes>
       <RightButton />
     </Router>

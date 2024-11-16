@@ -28,7 +28,7 @@ function RightButton() {
             </button>
             <div id="options" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.5s ease', textAlign: 'left', paddingRight: '15px' }}>
                 <h3><Link className="rightlink" to={linkDisabled ? undefined : "/login"}>Sign up/Log in</Link></h3>
-                <h3><Link className="rightlink" to={linkDisabled ? undefined : "#"}>Booked shows</Link></h3>
+                <h3><Link className="rightlink" to={linkDisabled ? undefined : "/bookedshows"}>Booked shows</Link></h3>
                 <h3><a className="rightlink" href={linkDisabled ? undefined : "/#about"}>About us</a></h3>
             </div>
         </div>

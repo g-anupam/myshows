@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 3000;
 
 const authRoutes = require('./routes/auth');
 const seats = require("./routes/seats");
+const bookings = require("./routes/bookings");
+const user = require("./routes/user");
 
 // Enable CORS for all routes
 app.use(cors()); 
@@ -17,8 +19,10 @@ connectToDatabase().catch((error) => {
 });
 
 app.use(express.json());
-app.use("/", authRoutes);
-app.use("/",seats);
+app.use("/auth", authRoutes);
+app.use("/seats",seats);
+app.use("/bookings", bookings);
+app.use("/user", user);
 
 app.get('/', (req, res) => {
   res.send("Mongo DB native Driver up and running!");
