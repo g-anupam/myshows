@@ -1,0 +1,78 @@
+/* Main container for seat selection */
+.seat-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Back button styling */
+.back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.back-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px #0056b3;
+}
+
+/* Title styling */
+.seat-selection-title {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #333;
+}
+
+/* Container for seat selection buttons */
+.seat-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Individual seat buttons */
+.seat-button {
+    background-color: #f1f1f1;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.seat-button:hover {
+    background-color: #ddd;
+    transform: scale(1.1);
+}
+
+.seat-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px #ddd;
+}
+
+/* Highlight for selected seat */
+.seat-button.selected {
+    background-color: #28a745;
+    color: white;
+    border: 2px solid #218838;
+}

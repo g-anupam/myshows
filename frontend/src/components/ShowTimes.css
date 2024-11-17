@@ -1,0 +1,10 @@
+.show-container {
+    text-align: center;
+}
+
+#show {
+    height: 70px;
+    width: 120px;
+    margin: 2px;
+    color: blue;
+}
