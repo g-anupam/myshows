@@ -1,5 +1,13 @@
 .payment-div {
+    text-align: center;
+    padding-top: 100px;
     position: absolute;
     top: 40vh;
     left: 85vh;
+}
+button{
+    margin: 5px;
+}
+button .hover{
+    color: blue;
 }

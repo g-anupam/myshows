@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./MonteCarlo.css";
 import movie7 from "../../assets/movie7.jpg";
-import ShowTimes from "../components/ShowTimes.jsx";
-import SeatSelection from "../components/SeatSelection.jsx";
-import Confirmation from "../components/Confirmation.jsx";
+import ShowTimes from "../components/Common/ShowTimes.jsx";
+import SeatSelection from "../components/Common/SeatSelection.jsx";
+import Confirmation from "../components/Movie-specific/MonteCarlo/Confirmation.jsx";
+import SeatMatrix from "../components/Movie-specific/MonteCarlo/SeatMatrix.jsx";
 
 const MovieInfo = ({ onBuyTicketsClick }) => (  
   <>
@@ -45,13 +46,13 @@ const MonteCarlo = () => {
       return;
     }
     setStep('showTimes'); 
-  }
+  };
 
   const handleShowTimeSelect = (showTime) => {
     console.log("Selected show time : ", showTime);
     setSelectedShowTime(showTime);
     setStep('seatSelection');
-  }
+  };
 
   const handleBackClick = () => {
     console.log("Going back from step : ", step);
@@ -62,13 +63,13 @@ const MonteCarlo = () => {
     } else if (step === "showTimes") {
       setStep("movieInfo");
     }
-  }
+  };
 
   const handleSeatCountSelect = (count) => {
     console.log("Selected seat count : ", count);
     setSelectedSeatCount(count);
     setStep("confirmation");
-  }
+  };
 
   if (requiresLogin) {
     return <Link to="/login" className="loginLink"> Please Login to continue </Link>;
@@ -101,7 +102,7 @@ const MonteCarlo = () => {
         />
       )}
     </>
-  )
-}
+  );
+};
 
 export default MonteCarlo;

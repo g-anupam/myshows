@@ -9,6 +9,9 @@ import ToggleTheme from './components/ToggleTheme'
 import Signup from './pages/signup';
 import Login from './pages/Login';
 import MonteCarlo from './pages/MonteCarlo';
+import Herbie from './pages/Herbie';
+import Terminator from './pages/Terminator';
+import ZNMD from './pages/znmd';
 import Payments from './pages/Payments';
 import BookedShows from './pages/BookedShows';
 import FirstName from './components/FirstName';
@@ -61,6 +64,9 @@ createRoot(document.getElementById('root')).render(
             </>
           } />
           <Route path="/monte-carlo" element={<MonteCarlo />} />
+          <Route path="/herbie" element={<Herbie />} />
+          <Route path='/terminator'  element={<Terminator />} />
+          <Route path='znmd' element={<ZNMD />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/payments" element={<Payments />} />

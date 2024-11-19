@@ -10,9 +10,9 @@ import Montecarlo from "../pages/MonteCarlo.jsx";
 function Movies() {
     const moviesList = [
         { name: 'Monte Carlo', image: movie7, link: '/monte-carlo' },
-        { name: 'Herbie: Fully Loaded', image: movie8 },
-        { name: 'Terminator: Judgement Day', image: movie9 },
-        { name: 'Zindagi Na Milegi Dobara', image: movie10 },
+        { name: 'Herbie: Fully Loaded', image: movie8,link: 'herbie' },
+        { name: 'Terminator: Judgement Day', image: movie9, link: 'terminator' },
+        { name: 'Zindagi Na Milegi Dobara', image: movie10, link: 'znmd' },
     ];
 
     const [searchTerm, setSearchTerm] = useState('');
