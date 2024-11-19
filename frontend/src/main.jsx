@@ -53,11 +53,11 @@ createRoot(document.getElementById('root')).render(
                 <br />
                 <h3>Developers:</h3>
                 <h3 id="names">
-                  <a id="names" href="#">Ayush Chakraborty</a>
+                  <a id="names" href="https://github.com/AyushChakraborty">Ayush Chakraborty</a>
                   <br />
-                  <a id="names" href="#">Anupam G</a>
+                  <a id="names" href="https://github.com/g-anupam">Anupam G</a>
                   <br />
-                  <a id="names" href="#">Archit Rode</a>
+                  <a id="names" href="https://github.com/Archit-Rode">Archit Rode</a>
                   <br />
                 </h3>
               </div>
