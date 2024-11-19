@@ -19,10 +19,10 @@ async function insertShowtime() {
     
     // MongoDB command to insert a sample showtime
     const result = await showtime.insertOne({
-    movieId: "monte_carlo_001",
-    movieName: "Monte Carlo",
+    movieId: "zindagi_006",
+    movieName: "Zindagi Na Milegi Dobara",
     showDate: "2024-11-11",
-    showTime: "9:00 AM",
+    showTime: "7:00 PM",
     theater: "Theater 1",
     ticketPrice: 12.99,
     totalRows: 10,
@@ -180,7 +180,7 @@ async function insertShowtime() {
     }
   ],
   createdAt: new Date(),
-  screenNumber: 1,
+  screenNumber: 3,
   totalSeats: 100,
   availableSeats: 100,
   bookedSeats: 0
