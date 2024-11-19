@@ -57,9 +57,11 @@ function BookedShows() {
                 <div>
                     {bookedShows.map((booking, index) => (
                         <div key={index} className="booking-details">
-                            <p><strong>Showtime:</strong> {booking.showtimeId}</p>
-                            <p><strong>Seats: </strong> {booking.seats.join(', ')}</p>
-                            <p><strong>Booking date:</strong> {new Date(booking.bookingDate).toLocaleDateString()}</p>
+                            <p><strong>Showtime Id : </strong> {booking.showtimeId}</p>
+                            <p><strong>Time : </strong> {booking.showtimeDetails.showTime} </p>
+                            <p><strong>Seats : </strong> {booking.seats.join(', ')}</p>
+                            <p><strong>Booking date : </strong> {new Date(booking.bookingDate).toLocaleDateString()}</p>
+                            <p><strong>Theater :  </strong> {booking.showtimeDetails.theater} </p>
                         </div>
                     ))}
                 </div>
