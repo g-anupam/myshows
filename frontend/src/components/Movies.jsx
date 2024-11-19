@@ -6,6 +6,7 @@ import movie10 from '../../assets/movie10.jpg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Montecarlo from "../pages/MonteCarlo.jsx";
+import FirstName from './FirstName';
 
 function Movies() {
     const moviesList = [
@@ -45,6 +46,7 @@ function Movies() {
                         </button>
                     </div>
                 </div>
+                <FirstName />
             </header>
 
             <h2 id="mheading">Recommended Movies</h2>
