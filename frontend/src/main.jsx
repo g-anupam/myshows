@@ -14,13 +14,11 @@ import Terminator from './pages/Terminator';
 import ZNMD from './pages/znmd';
 import Payments from './pages/Payments';
 import BookedShows from './pages/BookedShows';
-import FirstName from './components/FirstName';
 import StripePayment from './pages/StripePayment';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
-      <FirstName />
       <header className="header-container">
         <div className="logo-container">
           <img src={logo} alt="TicketVerse Logo" className="logo-image" />
