@@ -38,7 +38,7 @@ const Herbie = () => {
     const [selectedSeatCount, setSelectedSeatCount] = useState(null);
     const [requiresLogin, setRequiresLogin] = useState(false);
 
-    const showTimes = ['9:00 AM', '10:30 AM', '12:00 PM', '3:30 PM', '5:00 PM', '7:45 PM'];
+    const showTimes = ['9:15 AM', '10:45 AM', '12:15 PM', '3:45 PM', '5:15 PM', '8:00 PM'];
 
     const handleBuyClick = () => {
         const userEmail = sessionStorage.getItem('userEmail');
