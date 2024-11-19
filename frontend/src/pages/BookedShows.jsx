@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import "./BookedShows.css";
 
 function BookedShows() {
     const [bookedShows, setBookedShows] = useState([]);

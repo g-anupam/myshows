@@ -1,0 +1,32 @@
+#booked {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#booked h2, #booked h3 {
+    text-align: center;
+    color: #333;
+}
+
+.booking-details {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.booking-details p {
+    margin: 10px 0;
+    color: #555;
+}
+
+.booking-details p strong {
+    color: #333;
+    display: inline-block;
+    width: 120px;
+}
