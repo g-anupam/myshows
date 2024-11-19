@@ -1,7 +1,7 @@
 #toggle {
     position: absolute;
-    right : 25vh;
-    top: 4vh;
+    right : 250px;
+    top: 40px;
     padding-left: 5px;
     border-radius: 30px;
     /* z-index: 100; */
