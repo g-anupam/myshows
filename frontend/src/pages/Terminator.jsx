@@ -38,7 +38,7 @@ const Terminator = () => {
     const [selectedSeatCount, setSelectedSeatCount] = useState(null);
     const [requiresLogin, setRequiresLogin] = useState(false);
 
-    const showTimes = ['9:00 AM', '10:30 AM', '12:00 PM', '3:30 PM', '5:00 PM', '7:45 PM'];
+    const showTimes = ['9:30 AM', '11:00 AM', '12:30 PM', '4:00 PM', '5:30 PM', '8:15 PM'];
 
     const handleBuyClick = () => {
         const userEmail = sessionStorage.getItem('userEmail');
