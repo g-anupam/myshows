@@ -31,6 +31,9 @@ npm run dev
 Few scripts have been added in the devtools directory inside backend for testing and debugging.
 Here are a few of them : 
 - Show all users : node DisplayAllUsers.js
+- Add a new showtime to the DB (Edit the contents to suits your needs for the repsective movie): node add.js
+
+
 
 
 
